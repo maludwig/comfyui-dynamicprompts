@@ -14,3 +14,8 @@ class DPRandomGenerator(DPAbstractSamplerNode):
             wildcard_manager=self._wildcard_manager,
             default_sampling_method=SamplingMethod.RANDOM,
         )
+
+    @classmethod
+    def IS_CHANGED(cls, text: str, seed: int, autorefresh: str):
+        # Force re-evaluation of the node only when something has changed
+        return f'[{text}, {seed}, {autorefresh}]'
